@@ -1,0 +1,6 @@
+<div>
+    {% url 'index' as index_url %}
+    <span>{% if request.path == index_url %}Home{% else %}<a href="{% url 'index' %}">Home</a>{% endif %}</span>
+    {% url 'historico' as historico_url %}
+    <span>{% if request.path == historico_url %}Historico{% else %}<a href="{% url 'historico' %}">Historico</a>{% endif %}</span>
+</div>
