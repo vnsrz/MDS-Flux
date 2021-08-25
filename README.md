@@ -1,6 +1,7 @@
 <!-- Logo do Projeto -->
-
-![](docs/assets/logo-2.png)
+<div align="center">
+	<img width=100% src="docs/assets/logo-2.png" alt="Flux" class="lg">
+</div>
 
 <h1 align="center"> Flux </h1>
 
