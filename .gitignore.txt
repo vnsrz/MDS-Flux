@@ -1,0 +1,5 @@
+*.pyc
+/src/db.sqlite3
+/src/.vscode
+
+/env/
