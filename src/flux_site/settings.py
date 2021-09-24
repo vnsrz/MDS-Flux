@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     #own
     'produtos',
+    'clients',
 ]
 
 MIDDLEWARE = [

@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index, name = "index"),
     path('historico', views.historico, name = "historico"),
     path('', include('produtos.urls')),
+    path('', include('clients.urls')),
 ]
