@@ -26,7 +26,7 @@ urlpatterns = [
     path('historico', views.historico, name = "historico"),
     path('produtos/', list_products, name = "produtos"),
     path('clientes', views.clientes, name = "clientes"),
-    path('inventario', views.clientes, name = "inventario"),+
+    path('inventario', views.clientes, name = "inventario"),
 
     #django auth
     path('accounts/login', auth_views.LoginView.as_view(template_name="accounts/login.html"), name ='login'),
