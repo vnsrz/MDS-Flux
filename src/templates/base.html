@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flux</title>
+    <title>{% block title %}Flux{% endblock %}</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'theme/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -20,8 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'theme/css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link rel='icon' sizes="16x16" type='image/png' href=""{% static 'logo/icon.png' % }"/>
-    
-    <title>{% block title %}Flux{% endblock %}</title>
+
+    {% block style %}{% endblock %}
+
 </head>
 <body>
 
@@ -283,6 +284,8 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'theme/js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'theme/js/demo/chart-pie-demo.js' %}"></script>
+
+    {% block script %} {% endblock %}  
 
 </body>
 </html>

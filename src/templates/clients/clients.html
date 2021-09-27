@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Clientes {% endblock %}
+
+{% block style %} 
+    <link href="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-6">
+    
+    <a href="{% url 'create_clients' %}" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-user"></i>
+        </span>
+        <span class="text">Cadastrar Novo Cliente</span>
+    </a>
+    <p></p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th>Cpf</th>
+                            <th>Endereço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <!-- <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th>Cpf</th>
+                            <th>Endereço</th>
+                        </tr> -->
+                    </tfoot>
+                    <tbody>
+                        {% for client in clients %}
+                        <tr>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.number }}</td>
+                            <td>{{ client.email }}</td>
+                            <td>{{ client.cpf }}</td>
+                            <td>{{ client.address }}</td>
+                            <td>
+                                <a href="{% url 'update_client' client.id %}" class="btn btn-info btn-circle btn-sm">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+
+                                <a href="{% url 'delete_client' client.id %}" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>     
+    <!-- <ul>
+        {% for client in clients %}   
+        <li>{{ client.name }}  
+            <a href="{% url 'update_client' client.id %}"><button></button></a> 
+            <a href="{% url 'delete_client' client.id %}" class="btn btn-danger btn-circle btn-lg">
+                <i class="fas fa-trash"></i>
+            </a>
+        </li>
+        {% endfor %}
+    </ul> -->
+
+    
+</div>
+
+{% endblock %}
+
+{% block script %} 
+    <script src="{% static 'theme/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'theme/js/demo/datatables-demo.js' %}"></script>
+{% endblock %} 

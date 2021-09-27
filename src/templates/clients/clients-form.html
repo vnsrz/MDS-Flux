@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Clientes - Cadastrar {% endblock %}
+
+{% block content %}
+<div class="col-lg-6">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Cadastrar Cliente</h6>
+        </div>
+
+        <div class="card-body">
+            <form class="row g-3" method="POST">
+                {% csrf_token %}
+                <!-- Name input field -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nome</label>
+                        {{ form.name }}
+                    </div>
+                </div>
+        
+                <!-- Number input field -->
+                <div class="col-md-6">
+                    <label for="inputNumber" class="form-label">Telefone</label>
+                    <!-- <input type="text" class="form-control" id="inputNumber" > -->
+                    {{ form.number }}
+                </div>
+        
+                <!-- Email input field -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Email</label>
+                        <!-- <input type="email" class="form-control" id="inputEmail" placeholder="exemplo@gmail.com"> -->
+                        {{ form.email }}
+                    </div>
+                </div>
+        
+                <!-- CPF input field -->
+                <div class="col-md-6">
+                    <label for="inputCPF" class="form-label">CPF</label>
+                    <!-- <input type="text" class="form-control" id="inputCPF" placeholder="Apenas números"> -->
+                    {{ form.cpf }}
+                </div>
+        
+                <!-- Address input field -->
+                <div class="col-12">
+                <div class="mb-4">
+                
+                    <label for="inputAddress" class="form-label">Endereço</label>
+                    <!-- <input type="text" class="form-control" id="inputAddress" placeholder="Ex: Qnm 14 bloco C - Taguatinga, DF"> -->
+                    {{ form.address }}
+                </div>
+                </div>
+
+                <div class="col-12">  
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ 
+    <!-- <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Save</button>
+    </form> -->
+
+    {% if client %}
+        <a href="{% url 'delete_client' client.id %}">Excluir</a>
+    {% endif %}
+{% endblock %}
