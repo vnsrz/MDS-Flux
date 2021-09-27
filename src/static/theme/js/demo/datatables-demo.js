@@ -203,7 +203,8 @@ $(document).ready(function() {
             }
         },
         "decimal": ","
-      
-  }
+    },
+    "paging":   true,
+    
   });
 });

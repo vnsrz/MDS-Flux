@@ -18,3 +18,4 @@ class ClientForm(forms.ModelForm):
                 'placeholder' : 'Ex: Qnm 14 bloco C - Taguatinga, DF'
             }),
         }
+
