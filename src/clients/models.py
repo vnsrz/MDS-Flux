@@ -5,9 +5,9 @@ from django.core.validators import RegexValidator
 # Create your models here.
 class Client(models.Model):
     name = models.TextField(max_length=100)
-    number = models.CharField(max_length=11, validators=[RegexValidator(regex='^.{11}$', message='Telefone deve conter 11 digitos', code='nomatch')])
+    number = models.CharField(max_length=11)
     email = models.EmailField()
-    cpf = models.CharField(max_length=11, unique=True, validators=[RegexValidator(regex='^.{11}$', message='CPF deve conter 11 digitos', code='nomatch')])
+    cpf = models.CharField(max_length=11, unique=True)
     address = models.TextField()
     
     def get_phone(self):

@@ -3,9 +3,20 @@
 
 {% block title %} Clientes - Deletar {% endblock %}
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <h2>Deseja excluir {{ client.name }}?</h2>
-        <button type="submit">Confirmar</button>
-    </form>
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <form method="post">
+            {% csrf_token %}
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"> Apagar Cliente</h6>
+            </div>
+            
+            <div class="card-body">
+                Deseja excluir {{ client.name }}?
+                <p></p>
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+            </div>
+        </form> 
+    </div>
+</div>
 {% endblock %}

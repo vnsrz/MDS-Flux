@@ -204,7 +204,7 @@ $(document).ready(function() {
         },
         "decimal": ","
     },
-    "paging":   true,
+    "paging":   false,
     
   });
 });
