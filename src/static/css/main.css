@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Flux font";
+    src: url("fonts/Renogare-Regular.otf") format("opentype");
+}
+
+.sidebar-brand-text {
+    font-family: "Flux font";
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    font-size: 1.5rem;
+}
+
+.bg-dark {
+    background-color: #262e3a !important;
+}
+
+.bg-secondary {
+    background-color: #181e29 !important;
+}
+
+/* #181e29 */
+
+a.bg-dark:hover, a.bg-dark:focus,
+button.bg-dark:hover,
+button.bg-dark:focus {
+  background-color: #202733 !important;
+}
