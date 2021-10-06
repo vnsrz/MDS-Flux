@@ -51,6 +51,3 @@ class ClientForm(forms.ModelForm):
             raise forms.ValidationError("Número de telefone inválido, deve conter 11 dígitos.")
         else:
             return number
-
-    
-

@@ -16,47 +16,39 @@
         <div class="my-1"> </div>
 
         <!-- Divider -->
-        <!-- <hr class="sidebar-divider my-0">
+        <!-- <hr class="sidebar-divider my-0" -->
+        <ul class="navbar-nav accordion" id="items-nav">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Principal</span></a>
+            </li>
 
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link"  href="{% url 'index' %}">
-                <i class="fas fa-fw fa-home"></i>
-                <span>Principal</span></a>
-        </li>
+            <!-- Nav Item - Clientes -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'clientes' %}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
 
-        <!-- Divider -->
-        <!-- <hr class="sidebar-divider"> -->
+            <!-- Nav Item - Historico -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'historico' %}">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>Histórico</span>
+                </a>
+            </li>
 
-        <!-- Heading -->
-        <!-- <div class="sidebar-heading">
-            Interface
-        </div> -->
-
-        <!-- Nav Item - Cleintes -->
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'clientes' %}">
-                <i class="fas fa-fw fa-user"></i>
-                <span>Clientes</span>
-            </a>
-        </li>
-
-        <!-- Nav Item - Historico -->
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'historico' %}">
-                <i class="fas fa-fw fa-calendar-alt"></i>
-                <span>Histórico</span>
-            </a>
-        </li>
-
-        <!-- Nav Item - Inventario -->
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'produtos' %}">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Inventário</span>
-            </a>
-        </li>
-
+            <!-- Nav Item - Inventario -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'produtos' %}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Inventário</span>
+                </a>
+            </li>
+        </ul>
         <!-- Divider -->
         <!-- <hr class="sidebar-divider d-none d-md-block"> -->
         
@@ -66,13 +58,5 @@
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-
-        <!-- Sidebar Message -->
-        <!-- <div class="sidebar-card d-none d-lg-flex">
-            <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-            <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-        </div> -->
-
     </ul>
     <!-- End of Sidebar -->

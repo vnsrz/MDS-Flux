@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from . import views
-from products.views import list_products
-from clients.views import list_clients, create_client, update_client, delete_client
+from apps.products import views as product_views
+from apps.clients import views as client_views
+from apps.user import views as user_views
+
 from django.contrib import admin
 from django.contrib.auth import views as auth_views 
 from django.urls import path, include
@@ -32,16 +34,15 @@ urlpatterns = [
     path('historico', views.historico, name = "historico"),
 
     #produtos
-    path('produtos/', list_products, name = "produtos"),
+    path('produtos/', product_views.list_products, name = "produtos"),
 
     #clientes
-    path('clientes/', list_clients, name = "clientes"),
-    path('clientes/new', create_client, name='cliente_cadastro'),
-    path('clientes/update/<int:id>/', update_client, name='cliente_atualizar'),
-    path('clientes/delete/<int:id>/', delete_client, name='cliente_deletar'),
+    path('clientes/', client_views.list_clients, name = "clientes"),
+    path('clientes/new', client_views.create_client, name='create_clients'),
+    path('clientes/update/<int:id>/', client_views.update_client, name='update_client'),
+    path('clientes/delete/<int:id>/', client_views.delete_client, name='delete_client'),
 
-    
     #django auth
-    path('accounts/login', auth_views.LoginView.as_view(template_name="accounts/login.html"), name ='login'),
-    path('accounts/logout', auth_views.LogoutView.as_view(), name ='logout'),
+    path('register/', user_views.register, name='register'),
+    path('', include("django.contrib.auth.urls")),
 ]
