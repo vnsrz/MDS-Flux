@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'flux_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd1o713cusl1ths',
+        'USER': 'dyyiqhrytimusw',
+        'PASSWORD': '0a6e1ac7fb3044a2106e2f574b576b4c700b125d901c3a5e6dae23f0930ed821',
+        'HOST': 'ec2-52-86-123-180.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
