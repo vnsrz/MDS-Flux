@@ -25,7 +25,7 @@ PROJECT_DIR = BASE_DIR / 'flux_site'
 SECRET_KEY = 'django-insecure-4w7(t5yz4w8$v1z$sir7k$e68)t0)%i&k-*+1scwl^*66#o%4t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['fluxwebapp.herokuapp.com/']
 
