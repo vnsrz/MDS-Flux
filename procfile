@@ -1,1 +1,1 @@
-web: gunicorn src/flux_site.wsgi
+web: gunicorn flux_site.wsgi
