@@ -128,7 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles"),
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
@@ -143,6 +142,3 @@ LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
 
 AUTH_USER_MODEL = 'user.CustomUser'
-
-import django_heroku
-django_heroku.settings(locals())
