@@ -37,12 +37,12 @@ urlpatterns = [
     path('produtos/', product_views.list_products, name = "produtos"),
 
     #clientes
-    path('clientes/', client_views.list_clients, name = "clientes"),
-    path('clientes/new', client_views.create_client, name='create_clients'),
-    path('clientes/update/<int:id>/', client_views.update_client, name='update_client'),
-    path('clientes/delete/<int:id>/', client_views.delete_client, name='delete_client'),
+    path('clientes/', client_views.list_clients, name = "list_clients"),
+    path('clientes/novo', client_views.create_client, name='create_clients'),
+    path('clientes/atualizar/<int:id>/', client_views.update_client, name='update_client'),
+    path('clientes/deletar/<int:id>/', client_views.delete_client, name='delete_client'),
 
     #django auth
-    path('register/', user_views.register, name='register'),
+    path('registrar/', user_views.register, name='register'),
     path('', include("django.contrib.auth.urls")),
 ]
