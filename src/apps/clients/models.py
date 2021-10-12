@@ -9,6 +9,8 @@ class Client(models.Model):
     email = models.EmailField()
     cpf = models.CharField(max_length=11, unique=False)
     address = models.TextField()
+    isActive = models.BooleanField(default=True)
+    status = models.CharField(max_length=20)
 
     def get_phone(self):
         n = str(self.number)
@@ -18,5 +20,11 @@ class Client(models.Model):
         n = str(self.cpf)
         return (f'{n[0:3]}.{n[3:6]}.{n[6:9]}-{n[9:]}')
 
+    def get_isActive(self):
+        if self.isActive:
+            return "Ativo"
+
     def __str__(self):
         return self.name
+
+    
