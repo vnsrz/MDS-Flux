@@ -32,9 +32,9 @@
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>Email</th>
+                            <th>Atividade</th>
                             <!-- <th>Cpf</th> -->
                             <!-- <th>Endereço</th> -->
-                            <th>Ações</th>
                         </tr>
                     </thead>
 
@@ -53,15 +53,27 @@
                     <tbody>
                         {% for client in clients %}
                         <tr>
-                            <td>{{ client.name }}</td>
+                            <td><a href="{% url 'client_profile' client.id %}"><strong>{{ client.name }}</strong></a></td>
                             <td>{{ client.get_phone }}</td>
                             <td>{{ client.email }}</td>
-                            <!-- <td>{{ client.cpf }}</td> -->
-                            <!-- <td>{{ client.address }}</td> -->
-                            <td>      
-                                <a href="{% url 'client_profile' client.id %}" class="btn btn-info">Perfil</a>
-                                <!-- <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Deletar</a> -->
+                            <td>
+                                {% if client.isActive %}
+                                    <span class="icon text-success">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text-gray-600">Ativo</span>
+                                {% else %}
+                                    <span class="icon text-warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                    <span class="text-gray-600">Inativo</span>
+                                {% endif %}
                             </td>
+
+                            <!-- <td>      
+                                <a href="{% url 'client_profile' client.id %}" class="btn btn-info">Perfil</a>
+                                <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Deletar</a>
+                            </td> -->
                         </tr>
                         {% endfor %}
                     </tbody>
