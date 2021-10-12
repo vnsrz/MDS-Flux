@@ -32,8 +32,8 @@
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>Email</th>
-                            <th>Cpf</th>
-                            <th>Endereço</th>
+                            <!-- <th>Cpf</th> -->
+                            <!-- <th>Endereço</th> -->
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -56,11 +56,11 @@
                             <td>{{ client.name }}</td>
                             <td>{{ client.get_phone }}</td>
                             <td>{{ client.email }}</td>
-                            <td>{{ client.cpf }}</td>
-                            <td>{{ client.address }}</td>
+                            <!-- <td>{{ client.cpf }}</td> -->
+                            <!-- <td>{{ client.address }}</td> -->
                             <td>      
-                                <a href="{% url 'update_client' client.id %}" class="btn btn-info">Editar</a>
-                                <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Deletar</a>
+                                <a href="{% url 'client_profile' client.id %}" class="btn btn-info">Perfil</a>
+                                <!-- <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Deletar</a> -->
                             </td>
                         </tr>
                         {% endfor %}

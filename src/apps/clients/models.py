@@ -7,12 +7,16 @@ class Client(models.Model):
     name = models.TextField(max_length=100)
     number = models.CharField(max_length=11)
     email = models.EmailField()
-    cpf = models.CharField(max_length=11, unique=True)
+    cpf = models.CharField(max_length=11, unique=False)
     address = models.TextField()
-    
+
     def get_phone(self):
         n = str(self.number)
         return (f'({n[0:2]}) {n[2:7]}-{n[7:]}')
+    
+    def get_cpf(self):
+        n = str(self.cpf)
+        return (f'{n[0:3]}.{n[3:6]}.{n[6:9]}-{n[9:]}')
 
     def __str__(self):
         return self.name

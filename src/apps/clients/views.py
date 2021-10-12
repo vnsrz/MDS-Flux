@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.views.generic.edit import CreateView
 
 from apps import user
 from .models import Client
@@ -40,3 +41,8 @@ def delete_client (request, id):
         return redirect(list_clients)
         
     return render(request, 'clients/client-delete.html', {'client' : client})
+
+def client_profile (request, id):
+    client = Client.objects.get(id=id)
+
+    return render(request, 'clients/profile.html', {'client': client}) 
