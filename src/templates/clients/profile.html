@@ -20,17 +20,93 @@
         </div>
         <!-- Page body -->
         <div class="card-body">
-            <div class="mb-3 text-gray-900">
-                <strong>Número:</strong> {{ client.get_phone }} <br>
-                <strong>Email:</strong> {{ client.email }} <br>
-                <strong>CPF:</strong> {{ client.get_cpf }} <br>
-                <strong>Endereço:</strong> {{ client.address }} <br>
+            <div class="mb-4 text-gray-800">
+                <!-- Phone number field -->
+                <span class="icon text-primary">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                </span>
+                <strong>‎Número:</strong>
+                <span class="ml-2">{{ client.get_phone }}</span><br>
+                <!-- End of phone number field -->
 
+                <hr class="sidebar-divider d-md-block">
                 
+                <!-- Email field -->
+                <span class="icon text-primary">
+                    <i class="fas fa-envelope mr-2"></i>
+                </span>
+                <strong>Email:</strong>
+                <span class="ml-2">{{ client.email }}</span><br>
+                <!-- End of email field -->
+
+                <hr class="sidebar-divider d-md-block">
+
+                <!-- CPF field -->
+                <span class="icon text-primary">
+                    <i class="fas fa-user mr-2"></i>
+                </span>
+                <strong>CPF:</strong>
+                <span class="ml-2">{{ client.get_cpf }}</span><br>
+                <!-- End of CPF field -->
+
+                <hr class="sidebar-divider d-md-block">
+
+                <!-- Address field -->
+                <span class="icon text-primary">
+                    <i class="fas fa-home mr-2"></i>
+                </span>
+                <strong>Endereço:</strong>
+                <span class="ml-2">{{ client.address }}</span> <br>
+                <!-- End of address field -->
+
+                <hr class="sidebar-divider d-md-block">
+                
+                <!-- Status field -->
+                <span class="icon text-primary">
+                    <i class="fas fa-clock mr-2"></i>
+                </span>
+                <strong>Status:</strong> 
+                {% if client.isActive %}
+                    <span class="icon text-success ml-2">
+                        <i class="fas fa-check mr-1"></i>
+                    </span> 
+                    Ativo
+                {% else %}
+                    <span class="icon text-gray-600 ml-2">
+                        <i class="fas fa-times mr-1"></i>
+                    </span>
+                    Inativo
+                {% endif %}
+                <!-- End of Status field -->
+                
+                <hr class="sidebar-divider d-md-block">
+
+                <!-- Debt field -->
+                <span class="icon text-primary">
+                    <i class="fas fa-money-bill-wave mr-2"></i>
+                </span>
+                <strong>Pendências:</strong> 
+                {% if client.hasDebt %}
+                    <span class="icon text-danger ml-2">
+                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                    </span> 
+                    Dívida em aberto
+                {% else %}
+                    <span class="icon text-success ml-2">
+                        <i class="fas fa-check mr-1"></i>
+                    </span>
+                    Em dia
+                {% endif %}
+                <!-- End of Debt field -->
+
             </div>
 
-            <a href="{% url 'update_client' client.id %}" class="btn btn-info">Editar</a>
-            <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Apagar</a>
+
+            <div class="float-right">
+                <a href="{% url 'update_client' client.id %}" class="btn btn-info">Editar</a>
+                <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Apagar</a>
+            </div>
+            
         </div>
     </div>       
 </div>

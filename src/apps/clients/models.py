@@ -10,7 +10,7 @@ class Client(models.Model):
     cpf = models.CharField(max_length=11, unique=False)
     address = models.TextField()
     isActive = models.BooleanField(default=True)
-    status = models.CharField(max_length=20)
+    hasDebt = models.BooleanField(default=False)
 
     def get_phone(self):
         n = str(self.number)
