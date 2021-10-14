@@ -39,6 +39,8 @@ class ClientForm(forms.ModelForm):
             raise forms.ValidationError("CPF inválido, deve conter apenas números.")
         if len(cpf) != 11:
             raise forms.ValidationError("CPF inválido, deve conter 11 dígitos.")
+        # if Client.objects.filter(user=self.cleaned_data.get("user"), cpf=self.cleaned_data.get("cpf")).exists():
+        #     raise forms.ValidationError('CPF já cadastrado.')
         else:
             return cpf
     
@@ -51,6 +53,3 @@ class ClientForm(forms.ModelForm):
             raise forms.ValidationError("Número de telefone inválido, deve conter 11 dígitos.")
         else:
             return number
-
-    
-

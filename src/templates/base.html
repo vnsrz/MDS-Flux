@@ -26,8 +26,8 @@
     {% block style %}{% endblock %}
 
 </head>
+{% if user.is_authenticated %}
 <body>
-
     <!-- Wrapper que cobre a pagina toda -->
     <div id="wrapper">
         {% include 'navbar.html' %}
@@ -43,20 +43,6 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-    
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Pesquisar por..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
     
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -104,15 +90,15 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-600"></i>
-                                    Profile
+                                    Perfil
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-600"></i>
-                                    Settings
+                                    Configurações
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-600"></i>
-                                    Activity Log
+                                    Atividade
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'logout' %}" data-target="#logoutModal">
@@ -126,29 +112,32 @@
     
                 </nav>
                 <!-- End of Topbar -->
-
                 <!-- Conteudo da pagina -->
                 {% block content %}
                 {% endblock %}
                 <!-- Fim do conteudo -->
 
             </div>
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Flux 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
         <!-- Fim do wrapper de conteudo -->
     </div>
     <!-- Fim do wrapper que cobre a pagina toda -->
 
-
-
-
-
-
-
-
-
-
-
-
+     <!-- Scroll to Top Button-->
+     <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'theme/vendor/jquery/jquery.min.js' %}"></script>
@@ -167,7 +156,21 @@
     <script src="{% static 'theme/js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'theme/js/demo/chart-pie-demo.js' %}"></script>
 
+    <!-- <script>
+        $(document).ready(function() {
+            $('.navbar-nav .nav-item a').click(function() {
+                // remove active class
+                $('.nav-item').removeClass('active')
+                // add active class
+                $(this).closest('.nav-item').addClass('active')
+            })
+        });
+    </script> -->
+
     {% block script %} {% endblock %}  
 
 </body>
+{% else %}
+        <meta http-equiv="refresh" content="0; URL=login" />
+{% endif %}
 </html>
