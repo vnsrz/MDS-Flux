@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Compras - Cadastrar {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Cadastrar Compra</h6>
+            </div>
+
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        {{ form | crispy }}
+                    </div>
+
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="reset" class="btn btn-danger">Desfazer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
