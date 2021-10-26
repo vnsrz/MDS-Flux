@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Compra - Deletar {% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <form method="post">
+            {% csrf_token %}
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Apagar Compra</h6>
+            </div>
+            
+            <div class="card-body">
+                Deseja excluir esta compra?
+                <p></p>
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+            </div>
+        </form> 
+    </div>
+</div>
+{% endblock %}

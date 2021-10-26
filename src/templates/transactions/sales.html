@@ -33,6 +33,7 @@
                             <th>Produtos</th>
                             <th>Preço</th>
                             <th>Data</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -44,6 +45,7 @@
                             <td>{{ sale.products }}</td> 
                             <td>{{ sale.price}}</td>
                             <td>{{ sale.sale_date}}</td>
+                            <td><a href="{% url 'delete_sale' sale.id %}" class="btn btn-danger">Apagar</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
