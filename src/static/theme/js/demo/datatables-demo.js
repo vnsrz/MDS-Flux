@@ -1,7 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
     $('#dataTable').removeAttr('width').DataTable({
-        paging:         false,
+        paging: false,
         columnDefs: [
             // { width: 200, targets: 0 },
             // { "className": "text-center", "targets": 3 }

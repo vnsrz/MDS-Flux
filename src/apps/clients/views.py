@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView
 
 from apps import user
 from .models import Client
+from apps.transactions.models import Sale
 from .forms import ClientForm
 
 # Create your views here.
@@ -44,17 +45,16 @@ def delete_client (request, id):
 
 def client_profile (request, id):
     client = Client.objects.get(id=id)
+    sales = Sale.objects.filter(client=client)
 
-    return render(request, 'clients/profile.html', {'client': client})
+    return render(request, 'clients/profile.html', {'client': client, 'sales': sales})
 
 def archive_client (request, id):
     Client.objects.filter(id=id).update(isActive=False)
-
 
     return redirect(list_clients) 
 
 def unarchive_client (request, id):
     Client.objects.filter(id=id).update(isActive=True)
-
 
     return redirect(list_clients) 

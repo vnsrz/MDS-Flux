@@ -40,7 +40,7 @@
                     <tbody>
                         {% for sale in sales %}
                         <tr>
-                            <td>{{ sale.client }}</a></td>
+                            <td><a href="{% url 'client_profile' sale.client.id %}"><strong>{{ sale.client }}</strong></a></td>
                             <td>{{ sale.products }}</td> 
                             <td>{{ sale.price}}</td>
                             <td>{{ sale.sale_date}}</td>
