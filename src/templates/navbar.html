@@ -18,11 +18,27 @@
         <!-- Divider -->
         <!-- <hr class="sidebar-divider my-0" -->
         <ul class="navbar-nav accordion" id="items-nav">
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Principal -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}">
                     <i class="fas fa-fw fa-home"></i>
-                    <span>Principal</span></a>
+                    <span>Principal</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Transaçoes -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{% url 'index' %}" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-wallet"></i>
+                    <span>Transações</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-secondary py-2 collapse-inner rounded">
+                        <a class="collapse-item text-gray-500" href="{% url 'list_purchases' %}">Compras</a>
+                        <a class="collapse-item text-gray-500" href="{% url 'list_sales' %}">Vendas</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Clientes -->
@@ -42,12 +58,12 @@
             </li>
 
             <!-- Nav Item - Inventario -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="{% url 'produtos' %}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Inventário</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
         <!-- Divider -->
         <!-- <hr class="sidebar-divider d-none d-md-block"> -->

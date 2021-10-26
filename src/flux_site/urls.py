@@ -15,6 +15,7 @@ Including another URLconf
 """
 from . import views
 from apps.products import views as product_views
+from apps.transactions import views as trans_views
 from apps.clients import views as client_views
 from apps.user import views as user_views
 
@@ -35,6 +36,12 @@ urlpatterns = [
 
     #produtos
     path('produtos/', product_views.list_products, name = "produtos"),
+
+    #transacoes
+    path('transacoes/compra/', trans_views.list_purchases, name = "list_purchases"),
+    path('transacoes/compra/novo', trans_views.create_purchase, name='create_purchase'),
+    path('transacoes/venda/', trans_views.list_sales, name = "list_sales"),
+    path('transacoes/venda/novo', trans_views.create_sale, name='create_sale'),
 
     #clientes
     path('clientes/', client_views.list_clients, name = "list_clients"),
