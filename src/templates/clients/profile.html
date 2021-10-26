@@ -103,6 +103,11 @@
 
 
             <div class="float-right">
+                {% if client.isActive %}
+                    <a href="{% url 'archive_client' client.id %}" class="btn btn-primary">Arquivar</a>
+                {% else %}
+                    <a href="{% url 'unarchive_client' client.id %}" class="btn btn-primary">Desarquivar</a>
+                {% endif %}
                 <a href="{% url 'update_client' client.id %}" class="btn btn-info">Editar</a>
                 <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">Apagar</a>
             </div>
