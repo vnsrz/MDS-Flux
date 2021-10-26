@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Vendas {% endblock %}
+
+{% block style %} 
+    <link href="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <a href="{% url 'create_sale' %}" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-user"></i>
+        </span>
+        <span class="text">Cadastrar Nova Venda</span>
+    </a>
+    <p></p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vendas</h6>
+        </div>
+        <!-- Page body -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <!-- Table head -->
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Produtos</th>
+                            <th>Preço</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table body -->
+                    <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                            <td>{{ sale.client }}</a></td>
+                            <td>{{ sale.products }}</td> 
+                            <td>{{ sale.price}}</td>
+                            <td>{{ sale.sale_date}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>       
+</div>
+
+{% endblock %}
+
+{% block script %} 
+    <script src="{% static 'theme/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'theme/js/demo/datatables-demo.js' %}"></script>
+{% endblock %} 

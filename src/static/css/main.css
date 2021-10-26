@@ -20,9 +20,3 @@
 }
 
 /* #181e29 */
-
-a.bg-dark:hover, a.bg-dark:focus,
-button.bg-dark:hover,
-button.bg-dark:focus {
-  background-color: #202733 !important;
-}
