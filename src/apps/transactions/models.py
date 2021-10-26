@@ -20,9 +20,8 @@ class Purchase(models.Model):
     products = models.TextField(max_length=1000)
     provider = models.CharField(max_length=50)
     price = models.DecimalField(decimal_places=2, max_digits=20)
-
     objects = TransactionsManager()
-
+    
 class Sale(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     sale_date = models.DateField(verbose_name='sale date', auto_now_add=True)
@@ -30,10 +29,4 @@ class Sale(models.Model):
     products = models.TextField(max_length=1000)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10)
-
     objects = TransactionsManager()
-
-# class Balance(models.Model):
-#     monthly_income = models.DecimalField(decimal_places=2, max_digits=10)
-#     monthly_expenses = models.DecimalField(decimal_places=2, max_digits=10)
-

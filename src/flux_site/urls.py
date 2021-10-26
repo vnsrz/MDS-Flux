@@ -49,6 +49,9 @@ urlpatterns = [
     path('clientes/atualizar/<int:id>/', client_views.update_client, name='update_client'),
     path('clientes/deletar/<int:id>/', client_views.delete_client, name='delete_client'),
     path('clientes/perfil/<int:id>/', client_views.client_profile, name='client_profile'),
+    path('clientes/arquivar/<int:id>/', client_views.archive_client, name='archive_client'),
+    path('clientes/desarquivar/<int:id>/', client_views.unarchive_client, name='unarchive_client'),
+        
 
     #django auth
     path('registrar/', user_views.register, name='register'),

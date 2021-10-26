@@ -45,4 +45,16 @@ def delete_client (request, id):
 def client_profile (request, id):
     client = Client.objects.get(id=id)
 
-    return render(request, 'clients/profile.html', {'client': client}) 
+    return render(request, 'clients/profile.html', {'client': client})
+
+def archive_client (request, id):
+    Client.objects.filter(id=id).update(isActive=False)
+
+
+    return redirect(list_clients) 
+
+def unarchive_client (request, id):
+    Client.objects.filter(id=id).update(isActive=True)
+
+
+    return redirect(list_clients) 
