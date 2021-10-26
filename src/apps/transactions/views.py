@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect, render
+from apps import user
 
 from apps.transactions.models import Purchase, Sale
 from .forms import PurchaseForm, SaleForm
@@ -41,3 +42,25 @@ def create_sale (request):
         return redirect(list_sales)
 
     return render(request, 'transactions/sale-form.html', {'form': form})
+
+# Desfaz vendas
+def delete_sale (request, id):
+    
+    sale = Sale.objects.get(id=id)
+
+    if request.method == 'POST':
+        sale.delete()
+        return redirect(list_sales)
+        
+    return render(request, 'transactions/sale-delete.html', {'sale' : sale})
+
+# Desfaz compras
+def delete_purchase (request, id):
+    
+    purchase = Purchase.objects.get(id=id)
+
+    if request.method == 'POST':
+        purchase.delete()
+        return redirect(list_purchases)
+        
+    return render(request, 'transactions/purchase-delete.html', {'purchase' : purchase})

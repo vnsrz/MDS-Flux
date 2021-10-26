@@ -33,6 +33,7 @@
                             <th>Produtos</th>
                             <th>Preço</th>
                             <th>Data</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -44,6 +45,7 @@
                             <td>{{ purchase.products }}</td> 
                             <td>{{ purchase.price}}</td>
                             <td>{{ purchase.purchase_date}}</td>
+                            <td><a href="{% url 'delete_purchase' purchase.id %}" class="btn btn-danger">Apagar</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
