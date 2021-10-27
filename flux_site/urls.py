@@ -62,3 +62,4 @@ urlpatterns = [
 ]
 
 handler404 = 'flux_site.views.handler404'
+handler500 = 'flux_site.views.handler500'

@@ -5,13 +5,13 @@ from django.db.models import Sum
 import datetime
 
 class TransactionsManager(models.Manager):
-    def get_monthly_income(self):
+    def get_monthly_income(self, id):
         today = datetime.date.today()
-        return Sale.objects.filter(sale_date__year=today.year, sale_date__month=today.month).aggregate(Sum('price'))['price__sum'] or 0.00
+        return Sale.objects.filter(user=id, sale_date__year=today.year, sale_date__month=today.month).aggregate(Sum('price'))['price__sum'] or 0.00
 
-    def get_monthly_expenses(self):
+    def get_monthly_expenses(self, id):
         today = datetime.date.today()
-        return Purchase.objects.filter(purchase_date__year=today.year, purchase_date__month=today.month).aggregate(Sum('price'))['price__sum'] or 0.00
+        return Purchase.objects.filter(user=id, purchase_date__year=today.year, purchase_date__month=today.month).aggregate(Sum('price'))['price__sum'] or 0.00
 
 class Purchase(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
