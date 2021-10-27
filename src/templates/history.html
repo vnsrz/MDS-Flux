@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Histórico{% endblock %}
+
+{% block style %} 
+    <link href="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h2 mb-0 text-gray-800">Histórico</h1>
+    </div>
+
+    <div id="accordion">
+
+        {% for year in years %}
+            <div class="card shadow mb-4">
+                <div class="card-header py-3" id="heading{{ year }}">
+                    <h6>
+                        <button class="btn m-0 font-weight-bold text-primary" data-toggle="collapse" data-target="#collapse{{ year }}" aria-expanded="true" aria-controls="collapse{{ year }}">
+                            {{ year }}
+                        </button>
+                    </h6>
+                </div>
+            
+                <div id="collapse{{ year }}" class="collapse show" aria-labelledby="heading{{ year }}" data-parent="#accordion">
+                    <div class="card-body">
+                        <a href="{% url 'month_history' year 01 %}" class="btn btn-primary mb-2">Janeiro</a>
+                        <a href="{% url 'month_history' year 02 %}" class="btn btn-primary mb-2">Fevereiro</a>
+                        <a href="{% url 'month_history' year 03 %}" class="btn btn-primary mb-2">Março</a>
+                        <a href="{% url 'month_history' year 04 %}" class="btn btn-primary mb-2">Abril</a>
+                        <a href="{% url 'month_history' year 05 %}" class="btn btn-primary mb-2">Maio</a>
+                        <a href="{% url 'month_history' year 06 %}" class="btn btn-primary mb-2">Junho</a>
+                        <a href="{% url 'month_history' year 07 %}" class="btn btn-primary mb-2">Julho</a>
+                        <a href="{% url 'month_history' year 08 %}" class="btn btn-primary mb-2">Agosto</a>
+                        <a href="{% url 'month_history' year 09 %}" class="btn btn-primary mb-2">Setembro</a>
+                        <a href="{% url 'month_history' year 10 %}" class="btn btn-primary mb-2">Outubro</a>
+                        <a href="{% url 'month_history' year 11 %}" class="btn btn-primary mb-2">Novembro</a>
+                        <a href="{% url 'month_history' year 12 %}" class="btn btn-primary mb-2">Dezembro</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script %} 
+    <script src="{% static 'theme/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'theme/js/demo/datatables-demo.js' %}"></script>
+{% endblock %} 

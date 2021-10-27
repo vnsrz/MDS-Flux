@@ -3,18 +3,14 @@
 
 {% block title %} Perfil de {{ client.name }} {% endblock %}
 
+{% block style %} 
+    <link href="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
-    
-    <!-- <a href="{% url 'create_clients' %}" class="btn btn-primary btn-icon-split">
-        <span class="icon text-white-50">
-            <i class="fas fa-user"></i>
-        </span>
-        <span class="text">Cadastrar Novo Cliente</span>
-    </a>
-    <p></p> -->
-
-    <div class="card shadow mb-4">
+    <!-- Client Info Card -->
+    <div class="card shadow mb-3">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">{{ client.name }}</h6>
         </div>
@@ -113,7 +109,40 @@
             </div>
             
         </div>
-    </div>       
+    </div>     
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vendas</h6>
+        </div>
+        <!-- Page body -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <!-- Table head -->
+                    <thead>
+                        <tr>
+                            <th>Produtos</th>
+                            <th>Preço</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table body -->
+                    <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                            <td>{{ sale.products }}</td> 
+                            <td>{{ sale.price}}</td>
+                            <td>{{ sale.sale_date}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}
