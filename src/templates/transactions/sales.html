@@ -25,7 +25,7 @@
         <!-- Page body -->
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
                     <!-- Table head -->
                     <thead>
                         <tr>
@@ -42,7 +42,7 @@
                         <tr>
                             <td><a href="{% url 'client_profile' sale.client.id %}"><strong>{{ sale.client }}</strong></a></td>
                             <td>{{ sale.products }}</td> 
-                            <td>{{ sale.price}}</td>
+                            <td>R$ {{ sale.price}}</td>
                             <td>{{ sale.sale_date}}</td>
                         </tr>
                         {% endfor %}

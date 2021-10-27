@@ -39,11 +39,41 @@ def index(request):
 
     return render(request, 'index.html', {'sales': sales, 'expenses': expenses, 'profit': profit, 'month': month})
 
-def historico(request):
-    return render(request, 'historico.html')
+def history(request):
+    id = request.user.id
+    earliest_sale = Sale.objects.filter(user=id).earliest('sale_date')
+    earliest_purchase = Purchase.objects.filter(user=id).earliest('purchase_date')
 
-def clientes(request):
-    return render(request, 'clientes.html')
+    latest_sale = Sale.objects.filter(user=id).latest('sale_date')
+    latest_purchase = Purchase.objects.filter(user=id).latest('purchase_date')
 
-def inventario(request):
-    return render(request, 'inventario.html')
+    if earliest_purchase.purchase_date > earliest_sale.sale_date:
+        oldest_month = earliest_sale.sale_date.month
+        oldest_year = earliest_sale.sale_date.year
+    else:
+        oldest_month = earliest_purchase.purchase_date.month
+        oldest_year = earliest_purchase.purchase_date.year
+
+    if latest_purchase.purchase_date > latest_sale.sale_date:
+        newest_month = latest_sale.sale_date.month
+        newest_year = latest_sale.sale_date.year
+    else:
+        newest_month = latest_purchase.purchase_date.month
+        newest_year = latest_purchase.purchase_date.year
+
+    years = list(range(2019, 2022))
+    #years = list(range(oldest_year, newest_year+1))
+
+    return render(request, 'history.html', {'years': years})
+
+def month_history(request, month, year):
+    id = request.user.id
+    sales = Sale.objects.filter(user=id, sale_date__year=year ,sale_date__month=month)
+    purchases = Purchase.objects.filter(user=id, purchase_date__year=year ,purchase_date__month=month)
+
+    return render(request, 'month_history.html', {'sales': sales, 'purchases': purchases})
+
+def handler404(request, exception, template_name="404.html"):
+    response = render(request, template_name)
+    response.status_code = 404
+    return response

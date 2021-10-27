@@ -14,13 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from . import views
-from apps.products import views as product_views
+#from apps.products import views as product_views
 from apps.transactions import views as trans_views
 from apps.clients import views as client_views
 from apps.user import views as user_views
 
 from django.contrib import admin
-from django.contrib.auth import views as auth_views 
 from django.urls import path, include
 
 urlpatterns = [
@@ -32,10 +31,11 @@ urlpatterns = [
     path('index', views.index, name = "index"),
 
     #historico
-    path('historico', views.historico, name = "historico"),
+    path('historico', views.history, name = "history"),
+    path('historico/<int:year>/<int:month>/', views.month_history, name = "month_history"),
 
     #produtos
-    path('produtos/', product_views.list_products, name = "produtos"),
+    #path('produtos/', product_views.list_products, name = "produtos"),
 
     #transacoes
     path('transacoes/compra/', trans_views.list_purchases, name = "list_purchases"),
@@ -57,3 +57,5 @@ urlpatterns = [
     path('registrar/', user_views.register, name='register'),
     path('', include("django.contrib.auth.urls")),
 ]
+
+handler404 = 'flux_site.views.handler404'
