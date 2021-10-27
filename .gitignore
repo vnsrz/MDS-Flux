@@ -1,7 +1,3 @@
 *.pyc
 .vscode
-db.sqlite3
-src/env/
-/src/db.sqlite3
-/src/.vscode
-/env/
+/flux_site/.env
