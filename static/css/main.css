@@ -3,20 +3,12 @@
     src: url("fonts/Renogare-Regular.otf") format("opentype");
 }
 
-@import url(//fonts.googleapis.com/css?family=Open+Sans);
-
 .sidebar-brand-text {
     font-family: "Flux font";
     text-transform: none;
     font-weight: 400;
     letter-spacing: 0.15rem;
     font-size: 1.5rem;
-}
-
-.topbar-title {
-  font-family: "Open Sans";
-  text-transform: none;
-  font-weight: 500;
 }
 
 .bg-dark {
@@ -39,10 +31,4 @@
     background-size: cover;
   }
   
-  .bg-password-image {
-    background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
-    background-position: center;
-    background-size: cover;
-  }
-
 /* #181e29 */
