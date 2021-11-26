@@ -23,40 +23,49 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    #admin
-    path('admin/', admin.site.urls),
+    # admin
+    path('admin/', admin.site.urls, name="admin"),
 
-    #index
-    path('', views.index, name = "index"),
-    path('index', views.index, name = "index"),
+    # index
+    path('', views.index, name="index"),
+    path('index', views.index, name="index"),
 
-    #historico
-    path('historico', views.history, name = "history"),
-    path('historico/<int:year>/<int:month>/', views.month_history, name = "month_history"),
+    # historico
+    path('historico', views.history, name="history"),
+    path('historico/<int:year>/<int:month>/',
+         views.month_history, name="month_history"),
 
-    #produtos
+    # produtos
     #path('produtos/', product_views.list_products, name = "produtos"),
 
-    #transacoes
-    path('transacoes/compra/', trans_views.list_purchases, name = "list_purchases"),
-    path('transacoes/compra/novo', trans_views.create_purchase, name='create_purchase'),
-    path('transacoes/venda/', trans_views.list_sales, name = "list_sales"),
+    # transacoes
+    path('transacoes/compra/', trans_views.list_purchases, name="list_purchases"),
+    path('transacoes/compra/novo',
+         trans_views.create_purchase, name='create_purchase'),
+    path('transacoes/venda/', trans_views.list_sales, name="list_sales"),
     path('transacoes/venda/novo', trans_views.create_sale, name='create_sale'),
-    path('transacoes/deletar_venda/<int:id>/', trans_views.delete_sale, name='delete_sale'),
-    path('transacoes/deletar_compra/<int:id>/', trans_views.delete_purchase, name='delete_purchase'),
-    
+    path('transacoes/deletar_venda/<int:id>/',
+         trans_views.delete_sale, name='delete_sale'),
+    path('transacoes/deletar_compra/<int:id>/',
+         trans_views.delete_purchase, name='delete_purchase'),
 
-    #clientes
-    path('clientes/', client_views.list_clients, name = "list_clients"),
+
+    # clientes
+    path('clientes/', client_views.list_clients, name="list_clients"),
     path('clientes/novo', client_views.create_client, name='create_clients'),
-    path('clientes/atualizar/<int:id>/', client_views.update_client, name='update_client'),
-    path('clientes/deletar/<int:id>/', client_views.delete_client, name='delete_client'),
-    path('clientes/perfil/<int:id>/', client_views.client_profile, name='client_profile'),
-    path('clientes/arquivar/<int:id>/', client_views.archive_client, name='archive_client'),
-    path('clientes/desarquivar/<int:id>/', client_views.unarchive_client, name='unarchive_client'),
-        
+    path('clientes/atualizar/<int:id>/',
+         client_views.update_client, name='update_client'),
+    path('clientes/deletar/<int:id>/',
+         client_views.delete_client, name='delete_client'),
+    path('clientes/perfil/<int:id>/',
+         client_views.client_profile, name='client_profile'),
+    path('clientes/arquivar/<int:id>/',
+         client_views.archive_client, name='archive_client'),
+    path('clientes/desarquivar/<int:id>/',
+         client_views.unarchive_client, name='unarchive_client'),
 
-    #django auth
+
+    # django auth
     path('registrar/', user_views.register, name='register'),
     path('', include("django.contrib.auth.urls")),
 ]

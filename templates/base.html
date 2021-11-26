@@ -71,6 +71,12 @@
                             
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                {% if user.is_admin %}
+                                    <a class="dropdown-item" href="admin/">
+                                        <i class="fas fa-lock-open fa-sm fa-fw mr-2 text-gray-800" ></i>
+                                        Admin
+                                    </a>
+                                {% endif %}
                                 <a class="dropdown-item" href="{% url 'logout' %}" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-800" ></i>
                                     Logout
