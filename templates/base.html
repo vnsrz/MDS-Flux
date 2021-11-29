@@ -77,6 +77,10 @@
                                         Admin
                                     </a>
                                 {% endif %}
+                                <a class="dropdown-item" href="{% url 'password_reset' %}">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-800" ></i>
+                                    Alterar senha
+                                </a>
                                 <a class="dropdown-item" href="{% url 'logout' %}" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-800" ></i>
                                     Logout
