@@ -1,5 +1,32 @@
-{% autoescape off %}
-Olá {{ user }},
-Clique no link abaixo para ativar sua conta no Flux:
-http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
-{% endautoescape %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .center {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    {% autoescape off %}
+
+    Olá {{ user }},<br>
+    Clique no link abaixo para ativar sua conta no Flux: <br><br>
+    
+    <a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirmar cadastro</a>
+
+    <br><br><br><br>
+
+    <img src="https://raw.githubusercontent.com/viniciusroriz/MDS-Flux/email_auth/static/logo/logo-2-tp.png" alt="logo" style="width:80%;"/>
+    <br>
+    <div class="center">
+        <a href="{{ protocol }}://{{ domain }}">Website</a> | <a href="https://github.com/viniciusroriz/MDS-Flux">Github</a>
+    </div>
+    
+    {% endautoescape %}
+</body>

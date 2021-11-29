@@ -12,6 +12,7 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.db.models.query_utils import Q
 from django.contrib.auth.tokens import default_token_generator
 from django.http import HttpResponse
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -33,7 +34,15 @@ def register(request):
             'token': account_activation_token.make_token(user),
         })
         to_email = form.cleaned_data.get('email')
-        send_mail(mail_subject, message, 'fluxwebapp@gmail.com', [to_email])
+        msg = EmailMessage(
+            mail_subject,
+            message,
+            'fluxwebapp@gmail.com',
+            [to_email, ]
+        )
+        msg.content_subtype = "html"
+        msg.send()
+        #send_mail(mail_subject, message, 'fluxwebapp@gmail.com', [to_email])
         header = "Confirme seu endereço de email"
         message = "Enviamos um e-mail de confirmação para sua conta, cheque sua caixa de entrada."
         return render(request, 'registration/confirm.html', {'header': header, 'message': message})
@@ -74,14 +83,24 @@ def password_reset_request(request):
                     'email':user.email,
                     'user': user,
                     'domain': current_site.domain,
-                    'site_name': 'Website',
+                    'site_name': 'Flux',
                     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                     'token': default_token_generator.make_token(user),
                     'protocol': 'http',
                     }
                     email = render_to_string(email_template_name, c)
+
+                    msg = EmailMessage(
+                        subject,
+                        email,
+                        'fluxwebapp@gmail.com',
+                        [user.email, ]
+                    )
+                    msg.content_subtype = "html"
+
                     try:
-                        send_mail(subject, email, 'fluxwebapp@gmail.com' , [user.email], fail_silently=False)
+                        msg.send()
+                        #send_mail(subject, email, 'fluxwebapp@gmail.com' , [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect ("/password_reset/done/")
