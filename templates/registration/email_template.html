@@ -1,0 +1,5 @@
+{% autoescape off %}
+Olá {{ user }},
+Clique no link abaixo para ativar sua conta no Flux:
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

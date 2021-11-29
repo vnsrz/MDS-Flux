@@ -20,13 +20,13 @@
 }
 
 .bg-login-image {
-    background: url("https://raw.githubusercontent.com/fowardshift/MDS-Flux/develop/docs/assets/flux-login-sqr.png");
+    background: url("https://raw.githubusercontent.com/viniciusroriz/MDS-Flux/main/docs/assets/flux-login-sqr.png");
     background-position: center;
     background-size: cover;
   }
   
   .bg-register-image {
-    background: url("https://raw.githubusercontent.com/fowardshift/MDS-Flux/develop/docs/assets/flux-login.png");
+    background: url("https://raw.githubusercontent.com/viniciusroriz/MDS-Flux/main/docs/assets/flux-login.png");
     background-position: center;
     background-size: cover;
   }

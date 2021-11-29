@@ -85,3 +85,8 @@ def handler500(request):
     response = render(request, "500.html")
     response.status_code = 500
     return response
+
+def test(request):
+    header = "Instruções enviadas"
+    message = "Enviamos instruções para a alteração da sua senha no email fornecido. Caso o mesmo não apareça, cheque a caixa de spam."
+    return render(request, 'registration/confirm.html', {'header': header, 'message': message})

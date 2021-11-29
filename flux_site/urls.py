@@ -20,9 +20,12 @@ from apps.clients import views as client_views
 from apps.user import views as user_views
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path('teste/', views.test, name="teste"),
+
     # admin
     path('admin/', admin.site.urls, name="admin"),
 
@@ -53,21 +56,24 @@ urlpatterns = [
     # clientes
     path('clientes/', client_views.list_clients, name="list_clients"),
     path('clientes/novo', client_views.create_client, name='create_clients'),
-    path('clientes/atualizar/<int:id>/',
-         client_views.update_client, name='update_client'),
-    path('clientes/deletar/<int:id>/',
-         client_views.delete_client, name='delete_client'),
-    path('clientes/perfil/<int:id>/',
-         client_views.client_profile, name='client_profile'),
-    path('clientes/arquivar/<int:id>/',
-         client_views.archive_client, name='archive_client'),
-    path('clientes/desarquivar/<int:id>/',
-         client_views.unarchive_client, name='unarchive_client'),
+    path('clientes/atualizar/<int:id>/', client_views.update_client, name='update_client'),
+    path('clientes/deletar/<int:id>/', client_views.delete_client, name='delete_client'),
+    path('clientes/perfil/<int:id>/', client_views.client_profile, name='client_profile'),
+    path('clientes/arquivar/<int:id>/', client_views.archive_client, name='archive_client'),
+    path('clientes/desarquivar/<int:id>/', client_views.unarchive_client, name='unarchive_client'),
 
 
     # django auth
     path('registrar/', user_views.register, name='register'),
-    path('', include("django.contrib.auth.urls")),
+    path('registrar/<slug:uidb64>/<slug:token>/', user_views.activate, name='activate'),
+    #path('', include("django.contrib.auth.urls")),
+
+    path('login/', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    path('logout/', auth_views.LogoutView.as_view(template_name=""), name="logout"),
+    path('alterar-senha', user_views.password_reset_request, name="password_reset"),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password/password_reset_done.html'), name='password_reset_done'),
+    path('alterar/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="password/password_reset_confirm.html"), name='password_reset_confirm'),
+    path('alterar/pronto/', auth_views.PasswordResetCompleteView.as_view(template_name='password/password_reset_complete.html'), name='password_reset_complete'),
 ]
 
 handler404 = 'flux_site.views.handler404'
