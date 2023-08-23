@@ -48,21 +48,16 @@ def history(request):
     latest_purchase = Purchase.objects.filter(user=id).latest('purchase_date')
 
     if earliest_purchase.purchase_date > earliest_sale.sale_date:
-        oldest_month = earliest_sale.sale_date.month
         oldest_year = earliest_sale.sale_date.year
     else:
-        oldest_month = earliest_purchase.purchase_date.month
         oldest_year = earliest_purchase.purchase_date.year
 
     if latest_purchase.purchase_date > latest_sale.sale_date:
-        newest_month = latest_sale.sale_date.month
         newest_year = latest_sale.sale_date.year
     else:
-        newest_month = latest_purchase.purchase_date.month
         newest_year = latest_purchase.purchase_date.year
 
-    years = list(range(2019, 2022))
-    #years = list(range(oldest_year, newest_year+1))
+    years = list(range(oldest_year, newest_year+1))
 
     return render(request, 'history.html', {'years': years})
 
