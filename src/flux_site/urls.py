@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from . import views
-#from apps.products import views as product_views
+from apps.products import views as product_views
 from apps.transactions import views as trans_views
 from apps.clients import views as client_views
 from apps.user import views as user_views
@@ -35,7 +35,7 @@ urlpatterns = [
     path('historico/<int:year>/<int:month>/', views.month_history, name = "month_history"),
 
     #produtos
-    #path('produtos/', product_views.list_products, name = "produtos"),
+    path('produtos/', product_views.list_products, name = "list_products"),
 
     #transacoes
     path('transacoes/compra/', trans_views.list_purchases, name = "list_purchases"),

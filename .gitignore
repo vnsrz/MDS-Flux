@@ -1,4 +1,5 @@
 *.pyc
+.python-version
 .vscode
 db.sqlite3
 src/env/

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Estoque {% endblock %}
+
+{% block style %} 
+    <link href="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <a href="{% url 'create_sale' %}" class="btn btn-primary btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-box"></i>
+        </span>
+        <span class="text">Cadastrar Novo Produto</span>
+    </a>
+    <p></p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Produtos</h6>
+        </div>
+        <!-- Page body -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
+                    <!-- Table head -->
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preço de custo</th>
+                            <th>Preço de venda</th>
+                            <th>Quantidade</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table body -->
+                    <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                            <td><a href="{% url 'client_profile' sale.client.id %}"><strong>{{ sale.client }}</strong></a></td>
+                            <td>{{ sale.products }}</td> 
+                            <td>R$ {{ sale.price}}</td>
+                            <td>{{ sale.sale_date}}</td>
+                            <td><a href="{% url 'delete_sale' sale.id %}" class="btn btn-danger">Apagar</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>       
+</div>
+
+{% endblock %}
+
+{% block script %} 
+    <script src="{% static 'theme/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'theme/js/demo/datatables-demo.js' %}"></script>
+{% endblock %} 
