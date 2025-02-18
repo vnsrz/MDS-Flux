@@ -45,7 +45,11 @@
                             <td>{{ purchase.products }}</td> 
                             <td> R$ {{ purchase.price}}</td>
                             <td>{{ purchase.purchase_date}}</td>
-                            <td><a href="{% url 'delete_purchase' purchase.id %}" class="btn btn-danger">Apagar</a></td>
+                            <td><a href="{% url 'delete_purchase' purchase.id %}"
+                                class="btn btn-danger delete-item-btn" 
+                                data-toggle="modal" 
+                                data-target="#delete-item-modal">Remover</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -55,9 +59,34 @@
     </div>       
 </div>
 
+<!-- Confirmation Modal -->
+<div class="modal fade" id="delete-item-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <form method="post" id="item-delete-form">
+                    <div class="modal-body">
+                        <p>Deseja remover essa compra do histórico?</p>
+                    </div>
+                    <div class="justify-content-between mb-2 mr-2 text-right">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger" id="confirm-delete-item-button">Remover</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
-{% block script %} 
+{% block script %}
+    <script>
+        $(document).on('click', '.delete-item-btn', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            let deleteUrl = $(this).attr('href');
+            //console.log("Delete URL:", deleteUrl);
+            document.getElementById("item-delete-form").action = deleteUrl;
+        });
+    </script>
     <script src="{% static 'theme/vendor/datatables/jquery.dataTables.min.js' %}"></script>
     <script src="{% static 'theme/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
     <script src="{% static 'theme/js/demo/datatables-demo.js' %}"></script>
