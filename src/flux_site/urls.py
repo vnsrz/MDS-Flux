@@ -36,6 +36,7 @@ urlpatterns = [
 
     #produtos
     path('produtos/', product_views.list_products, name = "list_products"),
+    path('produtos/deletar_produto/<int:id>/', product_views.delete_product, name = "delete_product"),
 
     #transacoes
     path('transacoes/compra/', trans_views.list_purchases, name = "list_purchases"),
@@ -45,7 +46,6 @@ urlpatterns = [
     path('transacoes/deletar_venda/<int:id>/', trans_views.delete_sale, name='delete_sale'),
     path('transacoes/deletar_compra/<int:id>/', trans_views.delete_purchase, name='delete_purchase'),
     
-
     #clientes
     path('clientes/', client_views.list_clients, name = "list_clients"),
     path('clientes/novo', client_views.create_client, name='create_clients'),
